@@ -1,0 +1,22 @@
+<div class ="container mt-2">
+    <legend>Create</legend>
+    <form>
+        <div class="mb-3">
+        <label for="txtName" class="form-label">Name</label>
+        <input type="text" class="form-control" id="txtName" aria-describedby="emailHelp" name="name" [(ngModel)]="student.name">
+      </div>
+      <div class="mb-3">
+        <label for="txtroll" class="form-label">RollNumber</label>
+        <input type="number" class="form-control" id="txtroll" aria-describedby="emailHelp" name="rollnumber" [(ngModel)]="student.rollnumber">
+      </div>
+      <div class="mb-3">
+        <label for="txtCourse" class="form-label">Course</label>
+        <input type="text" class="form-control" id="txtCourse" aria-describedby="emailHelp" name="course" [(ngModel)]="student.course">
+      </div>
+      <div class="mb-3">
+        <label for="txtGender" class="form-label">Gender</label>
+        <input type="text" class="form-control" id="txtGender" aria-describedby="emailHelp" name="gender" [(ngModel)]="student.gender">
+      </div>
+      <button type="button" class="btn btn-primary" (click)="create()">Create</button>
+    </form>
+</div>
