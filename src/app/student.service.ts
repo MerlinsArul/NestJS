@@ -17,11 +17,14 @@ export class StudentService {
     return this.http.post('http://localhost:3000/student',student)
   }
 
-  getById(id:string){
-    return this.http.get<Student>(`http://localhost:3000/student/${id}`)
+  getById(_id:string){
+    return this.http.get<Student>(`http://localhost:3000/student/${_id}`)
   }
 
- update(id:string,student:CreateOrUpdateStudent){
-  return this.http.put(`http://localhost:3000/student/${id}`,student)
+ update(_id:string,student:CreateOrUpdateStudent){
+  return this.http.put(`http://localhost:3000/student/${_id}`,student)
+ }
+ delete(_id:string){
+  return this.http.delete(`http://localhost:3000/student/${_id}`)
  }
 }
