@@ -1,9 +1,12 @@
-import { BadRequestException, Body, Controller, Get, Post, Req, Res, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Post, Req, Res, UnauthorizedException, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import * as bcrypt from 'bcrypt';
 import {JwtService} from "@nestjs/jwt";
 import {Response, Request, response} from 'express';
 import { UserDto } from './user.dto';
+
+
+
 
 
 
@@ -14,14 +17,18 @@ export class UserController {
     @Post('register')
     async register(@Body() userdto:UserDto){
       
-        const {  name ,email, password } = userdto;
+        const { name ,email, password } = userdto;
         const hashedpassword = await bcrypt.hash(password , 12);
 
         const user = await this.userservice.create({
             name,
             email,
-            password:hashedpassword
+            password: hashedpassword,
+            type:'user'
+          
         });
+        console.log(user);
+        
        
      delete user.password;
 
@@ -43,7 +50,7 @@ export class UserController {
             }
 
             
-            const jwt = await this.jwtService.signAsync({_id: user._id,email:user.email});
+            const jwt = await this.jwtService.signAsync({_id: user._id,type:user.type});
 
             response.cookie('jwt', jwt, {httpOnly: true});
     
@@ -52,6 +59,7 @@ export class UserController {
             };
         }
         
+    
         @Get('user')
         async user(@Req() request: Request) {
             try {
@@ -65,9 +73,9 @@ export class UserController {
                     throw new UnauthorizedException();
                 }
     
-                const user = await this.userservice.findOne({email:data.email});
+                const user = await this.userservice.findOne({_id:data._id});
                 
-                const {password, ...result} = user;
+                // const {password, ...result} = user;
     
                 return user;
 
@@ -75,6 +83,7 @@ export class UserController {
                 throw new UnauthorizedException();
             }
         }
+
         @Post('logout')
         async logout(@Res({passthrough: true}) response: Response) {
             response.clearCookie('jwt');
