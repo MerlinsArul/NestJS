@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaderResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -29,8 +29,7 @@ export class LoginComponent implements OnInit {
     this.http.post('http://localhost:3000/auth/login', this.form.getRawValue(), {
       withCredentials: true
     }).subscribe((res) =>{
-  console.log();
-  
+  console.log(res);  
      this.router.navigate(['/'])})
   }
 }
