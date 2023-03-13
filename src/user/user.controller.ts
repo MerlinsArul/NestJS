@@ -53,6 +53,7 @@ export class UserController {
             const jwt = await this.jwtService.signAsync({_id: user._id,type:user.type});
 
             response.cookie('jwt', jwt, {httpOnly: true});
+            
     
             return {
                 message: 'success'
@@ -75,13 +76,19 @@ export class UserController {
     
                 const user = await this.userservice.findOne({_id:data._id});
                 
-                // const {password, ...result} = user;
+                 const {password, ...result} = user;
     
                 return user;
 
             } catch (e) {
                 throw new UnauthorizedException();
             }
+        }
+
+        @Post('user')
+        @UseGuards()
+        async createuser(@Body() userdto:UserDto){
+            return  this.userservice.create(userdto)
         }
 
         @Post('logout')
