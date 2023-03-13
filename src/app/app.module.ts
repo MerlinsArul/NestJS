@@ -10,6 +10,7 @@ import { NavComponent } from './nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormStyle } from '@angular/common';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { AlluserComponent } from './alluser/alluser.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    AlluserComponent
   ],
   imports: [
     BrowserModule,

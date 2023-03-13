@@ -23,7 +23,7 @@ export class NavComponent {
   }
 
   logout(): void {
-    this.http.post('http://localhost:8000/api/logout', {}, {withCredentials: true})
+    this.http.post('http://localhost:3000/api/logout', {}, {withCredentials: true})
       .subscribe(() => this.authenticated = false);
   }
 
