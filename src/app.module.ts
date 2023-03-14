@@ -5,6 +5,7 @@ import { PassportModule } from '@nestjs/passport';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
+import { StudentModule } from './student/student.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { UserModule } from './user/user.module';
       secret:'secret',
       signOptions:{expiresIn:'1d'}
     }),
+    StudentModule,
  ],
   controllers: [AppController],
   providers: [AppService]

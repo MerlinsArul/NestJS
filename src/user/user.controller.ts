@@ -4,6 +4,7 @@ import * as bcrypt from 'bcrypt';
 import {JwtService} from "@nestjs/jwt";
 import {Response, Request, response} from 'express';
 import { UserDto } from './user.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 
 
@@ -62,6 +63,7 @@ export class UserController {
         
     
         @Get('user')
+       @UseGuards(AuthGuard())
         async user(@Req() request: Request) {
             try {
                 const cookie = request.cookies['jwt'];
