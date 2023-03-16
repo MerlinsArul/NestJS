@@ -1,9 +1,11 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
+import mongoose, { Document, SchemaTypes } from "mongoose";
 export type EnrollDocument = Enroll & Document
 
 @Schema({collection:'enroll'})
 export class Enroll {
+
+
    @Prop()
    title: string;
    @Prop()
@@ -15,4 +17,4 @@ export class Enroll {
  
 }
 
-export const CourseSchema = SchemaFactory.createForClass(Enroll);
+export const EnrollSchema = SchemaFactory.createForClass(Enroll);
