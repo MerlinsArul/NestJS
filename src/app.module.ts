@@ -9,6 +9,9 @@ import { UserModule } from './user/user.module';
 import { CourseController } from './course/course.controller';
 import { CourseService } from './course/course.service';
 import { CourseModule } from './course/course.module';
+import { EnrollController } from './enroll/enroll.controller';
+import { EnrollService } from './enroll/enroll.service';
+import { EnrollModule } from './enroll/enroll.module';
 
 @Module({
   imports: [
@@ -19,8 +22,9 @@ import { CourseModule } from './course/course.module';
       secret:'secret',
       signOptions:{expiresIn:'1d'}
     }),
-    CourseModule,],
-  controllers: [AppController, UserController],
-  providers: [AppService],
+    CourseModule,
+    EnrollModule,],
+  controllers: [AppController, UserController, EnrollController],
+  providers: [AppService, EnrollService],
 })
 export class AppModule {}
