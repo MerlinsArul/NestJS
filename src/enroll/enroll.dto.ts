@@ -2,7 +2,7 @@ export class EnrollDto {
 
   readonly title: string;
 
-  readonly email:string;
+  readonly email:any;
 
   readonly courseid: number;
 

@@ -6,7 +6,7 @@ export type EnrollDocument = Enroll & Document
 export class Enroll {
 
 
-   @Prop()
+ @Prop()
    title: string;
    @Prop()
    courseid: number;

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Query, Request } from '@nestjs/common';
 import { query } from 'express';
 import { EnrollService } from './enroll.service';
 import { Query as ExpressQuery } from 'express-serve-static-core';
@@ -15,6 +15,7 @@ export class EnrollController {
 
     @Post()
     async addToenroll(@Body() enrolldto:EnrollDto){
+       //const email = req.user.email
         console.log(enrolldto);
         return this.enrollservice.addToEnroll(enrolldto)
         
