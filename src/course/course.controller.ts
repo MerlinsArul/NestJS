@@ -25,8 +25,8 @@ export class CourseController {
   }
 
    @Put('/:id')
-  async updateStudent(@Param('id') id: string, @Body() course: Course) {
-    return await this.courseservice.update(id, course);
+  async updateStudent(@Param('id') _id: string, @Body() course: Course) {
+    return await this.courseservice.update(_id, course);
   }
 
   @Delete('/:id')
