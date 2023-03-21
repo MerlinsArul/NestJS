@@ -27,4 +27,10 @@ export class EnrollController {
         return enrolledcourse;
     }
 
+    @Delete()
+    async deleteAll(@Request() req){
+        const deleteitem = await this.enrollservice.deleteOrder(req);
+        return deleteitem
+    } 
+
 }

@@ -6,12 +6,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
-import { CourseController } from './course/course.controller';
-import { CourseService } from './course/course.service';
 import { CourseModule } from './course/course.module';
 import { EnrollController } from './enroll/enroll.controller';
 import { EnrollService } from './enroll/enroll.service';
 import { EnrollModule } from './enroll/enroll.module';
+import { OrderController } from './order/order.controller';
+import { OrderService } from './order/order.service';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -23,8 +24,9 @@ import { EnrollModule } from './enroll/enroll.module';
       signOptions:{expiresIn:'1d'}
     }),
     CourseModule,
-    EnrollModule,],
-  controllers: [AppController, UserController, EnrollController],
-  providers: [AppService, EnrollService],
+    EnrollModule,
+    OrderModule,],
+  controllers: [AppController, UserController, EnrollController, OrderController],
+  providers: [AppService, EnrollService, OrderService],
 })
 export class AppModule {}

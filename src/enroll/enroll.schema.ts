@@ -4,9 +4,7 @@ export type EnrollDocument = Enroll & Document
 
 @Schema({collection:'enroll'})
 export class Enroll {
-
-
- @Prop()
+   @Prop()
    title: string;
    @Prop()
    courseid: number;

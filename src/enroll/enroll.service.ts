@@ -29,4 +29,8 @@ export class EnrollService {
       const deletedCourse = await this.enrollModel.findByIdAndRemove(_id);
       return deletedCourse;
    }
+   async deleteOrder(enroll:Enroll){
+    const deleteData = await this.enrollModel.deleteMany({enroll});
+    return deleteData;
+  }
 }
